@@ -1,35 +1,17 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import conf from "./config/config";
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  console.log("AppWrite URL: ", conf.appWriteURL);
+  console.log("AppWrite ProjectId: ", conf.appWriteProjectId);
+  console.log("AppWrite DatabaseId: ", conf.appWriteDatabaseId);
+  console.log("AppWrite CollectionId: ", conf.appWriteCollectionId);
+  console.log("AppWrite BucketId: ", conf.appWriteBucketId);
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <h1>A blog app with AppWrite</h1>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
