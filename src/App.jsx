@@ -1,16 +1,43 @@
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import authService from "./appwrite/auth";
+import { login, logout } from "./redux/slices/authSlice";
 import "./App.css";
-import conf from "./config/config";
+import { toast } from "react-toastify";
+import { Footer, Header } from "./components";
+import { Outlet } from "react-router-dom";
 
 function App() {
-  console.log("AppWrite URL: ", conf.appWriteURL);
-  console.log("AppWrite ProjectId: ", conf.appWriteProjectId);
-  console.log("AppWrite DatabaseId: ", conf.appWriteDatabaseId);
-  console.log("AppWrite CollectionId: ", conf.appWriteCollectionId);
-  console.log("AppWrite BucketId: ", conf.appWriteBucketId);
-  return (
-    <>
-      <h1>A blog app with AppWrite</h1>
-    </>
+  const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    authService
+      .getCurrentUser()
+      .then((userData) => {
+        if (userData) dispatch(login({ userData }));
+        else dispatch(logout());
+      })
+      .catch(() => {
+        toast.error("User is not login");
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  });
+
+  return !loading ? (
+    <div className="min-h-screen flex flex-wrap content-between bg-gray-400">
+      <div className="w-full block">
+        <Header />
+        <main>
+          <Outlet />
+        </main>
+        <Footer />
+      </div>
+    </div>
+  ) : (
+    <h1>Loading...</h1>
   );
 }
 

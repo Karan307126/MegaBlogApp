@@ -46,8 +46,9 @@ export class AuthService {
     try {
       return await this.account.get();
     } catch (error) {
-      console.error("AppWrite service error :: getCurrentUser :: error", error);
-      return null;
+      throw new Error(
+        `AppWrite service error :: getCurrentUser :: error ${error.message}`
+      );
     }
   }
 
@@ -55,8 +56,9 @@ export class AuthService {
     try {
       return await this.account.deleteSessions();
     } catch (error) {
-      console.error("AppWrite service error :: logout :: error", error);
-      return null;
+      throw new Error(
+        `AppWrite service error :: logout :: error ${error.message}`
+      );
     }
   }
 }
