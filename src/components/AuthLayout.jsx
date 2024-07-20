@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import PropTypes from "prop-types";
 
 const Protected = ({ children, authentication = true }) => {
   const navigate = useNavigate();
@@ -25,8 +24,3 @@ const Protected = ({ children, authentication = true }) => {
 };
 
 export default Protected;
-
-Protected.propTypes = {
-  children: PropTypes.node.isRequired,
-  authentication: PropTypes.bool,
-};

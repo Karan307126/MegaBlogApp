@@ -1,5 +1,4 @@
 import React, { useId } from "react";
-import PropTypes from "prop-types";
 
 const Select = React.forwardRef(
   ({ options, label, className, ...props }, ref) => {
@@ -34,9 +33,3 @@ const Select = React.forwardRef(
 Select.displayName = "Select";
 
 export default Select;
-
-Select.propTypes = {
-  options: PropTypes.arrayOf(PropTypes.string).isRequired,
-  label: PropTypes.string,
-  className: PropTypes.string,
-};

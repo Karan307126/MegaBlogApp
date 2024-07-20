@@ -1,6 +1,5 @@
 import appwriteService from "../appwrite/config";
 import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
 
 const PostCard = ({ $id, title, featuredImage }) => {
   return (
@@ -20,9 +19,3 @@ const PostCard = ({ $id, title, featuredImage }) => {
 };
 
 export default PostCard;
-
-PostCard.propTypes = {
-  $id: PropTypes.string,
-  title: PropTypes.string,
-  featuredImage: PropTypes.string,
-};

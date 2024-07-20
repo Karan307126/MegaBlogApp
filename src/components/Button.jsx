@@ -1,5 +1,3 @@
-import PropTypes from "prop-types";
-
 const Button = ({
   children,
   type = "button",
@@ -20,11 +18,3 @@ const Button = ({
 };
 
 export default Button;
-
-Button.propTypes = {
-  children: PropTypes.string,
-  type: PropTypes.string,
-  bgColor: PropTypes.string,
-  textColor: PropTypes.string,
-  className: PropTypes.string,
-};
